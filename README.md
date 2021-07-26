@@ -88,7 +88,7 @@ RUN pip install \
   - Naviagate to 
   		```cd /mnt```
 
-  - Edit the config file:
+  - Edit the ```config.yml``` file:
   		Replace every occurence of ```"/mnt/data/qe_dask_GBP"``` to ```"/mnt/<domino-project-name>"```
 
   - Run the preprocess script (This cleans the dataset)
