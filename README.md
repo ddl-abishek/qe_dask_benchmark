@@ -49,10 +49,14 @@ RUN pip install \
 	blosc==1.9.2 \
 	dask==2021.06.0 \
 	dask distributed==2021.06.0 \
-	dask_ml==1.9.0 \
 	lz4==3.1.1 \
 	msgpack==1.0.0 \
-	numpy==1.18.1
+	numpy==1.18.1 \
+	matplotlib==3.4.2 \
+	seaborn==0.11.1 \
+	scikit-learn==0.24.2 \
+	tables==3.6.1 \
+	dask_ml==1.9.0
 ```
 
 
