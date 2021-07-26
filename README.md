@@ -44,8 +44,9 @@
    - Base Image URI : ```daskdev/dask:2021.6.2```
 
    - Dockerfile Instructions
-  	 	```RUN pip install \
-  	 		blosc==1.9.2 \
+  	 	```
+  	 	   RUN pip install \
+  	 	    blosc==1.9.2 \
 		    dask==2021.06.0 \
 		    dask distributed==2021.06.0 \
 		    dask_ml==1.9.0 \
