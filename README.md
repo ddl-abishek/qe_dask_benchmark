@@ -44,7 +44,7 @@ RUN pip install \
    - Base Image URI : ```daskdev/dask:2021.6.2```
 
    - Dockerfile Instructions
-  	 	```
+```
    RUN pip install \
     blosc==1.9.2 \
     dask==2021.06.0 \
@@ -52,7 +52,8 @@ RUN pip install \
     dask_ml==1.9.0 \
     lz4==3.1.1 \
     msgpack==1.0.0 \
-    numpy==1.18.1```
+    numpy==1.18.1
+```
 
 
    - Dask workspace settings - DFS project
