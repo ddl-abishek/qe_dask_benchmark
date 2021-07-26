@@ -89,7 +89,7 @@ RUN pip install \
   		```cd /mnt```
 
   - Edit the ```config.yml``` file:
-  		Replace every occurence of ```"/mnt/data/qe_dask_GBP"``` to ```"/mnt/<domino-project-name>"```
+  		Replace every occurence of ```"/mnt/data/qe_dask_GBP"``` to ```domino/datasets/local/<domino-project-name>```
 
   - Run the preprocess script (This cleans the dataset)
   		```python preprocess.py```
