@@ -8,34 +8,34 @@
 
   	 - Dockerfile Instructions
 ```
-  	 	RUN pip install \
-  	 		ray[all]==1.3.0 \   
-  	 		pandas \   
-  	 		pyyaml==5.4.1 \   
-  	 		blosc==1.9.2 \
-  	 		dask==2021.06.0 \
-  	 		dask distributed==2021.06.0 \
-  	 		lz4==3.1.1 \
-  	 		msgpack==1.0.0 \
-  	 		numpy==1.18.1 \
-  	 		matplotlib==3.4.2 \
-  	 		seaborn==0.11.1 \
-  	 		scikit-learn==0.24.2 \
-  	 		tables==3.6.1 \
-  	 		dask_ml==1.9.0
+RUN pip install \
+	ray[all]==1.3.0 \   
+	pandas \   
+	pyyaml==5.4.1 \   
+	blosc==1.9.2 \
+	dask==2021.06.0 \
+	dask distributed==2021.06.0 \
+	lz4==3.1.1 \
+	msgpack==1.0.0 \
+	numpy==1.18.1 \
+	matplotlib==3.4.2 \
+	seaborn==0.11.1 \
+	scikit-learn==0.24.2 \
+	tables==3.6.1 \
+	dask_ml==1.9.0
 ```
 
  - Pluggable Workspace Tools:
 ```
-		  jupyterlab:
-		  title: "JupyterLab"
-		  iconUrl: "/assets/images/workspace-logos/jupyterlab.svg"
-		  start: [  /opt/domino/workspaces/jupyterlab/start ]
-		  httpProxy:
-		    internalPath: "/{{ownerUsername}}/{{projectName}}/{{sessionPathComponent}}/{{runId}}/{{#if pathToOpen}}tree/{{pathToOpen}}{{/if}}"
-		    port: 8888
-		    rewrite: false
-		    requireSubdomain: false
+  jupyterlab:
+  title: "JupyterLab"
+  iconUrl: "/assets/images/workspace-logos/jupyterlab.svg"
+  start: [  /opt/domino/workspaces/jupyterlab/start ]
+  httpProxy:
+    internalPath: "/{{ownerUsername}}/{{projectName}}/{{sessionPathComponent}}/{{runId}}/{{#if pathToOpen}}tree/{{pathToOpen}}{{/if}}"
+    port: 8888
+    rewrite: false
+    requireSubdomain: false
 ```
 
 
@@ -45,14 +45,14 @@
 
    - Dockerfile Instructions
   	 	```
-  	 	   RUN pip install \
-  	 	    blosc==1.9.2 \
-		    dask==2021.06.0 \
-		    dask distributed==2021.06.0 \
-		    dask_ml==1.9.0 \
-		    lz4==3.1.1 \
-		    msgpack==1.0.0 \
-		    numpy==1.18.1```
+   RUN pip install \
+    blosc==1.9.2 \
+    dask==2021.06.0 \
+    dask distributed==2021.06.0 \
+    dask_ml==1.9.0 \
+    lz4==3.1.1 \
+    msgpack==1.0.0 \
+    numpy==1.18.1```
 
 
    - Dask workspace settings - DFS project
