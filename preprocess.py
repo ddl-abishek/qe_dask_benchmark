@@ -1,5 +1,3 @@
-# Usage
-# python preprocess.py --csv_year 2015 ; 2015 can be replace by 2013-14 or 2016 or 2017
 import dask.dataframe as dd
 import pandas as pd
 import dask

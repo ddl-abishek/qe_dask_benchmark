@@ -1,17 +1,9 @@
 import dask.dataframe as dd
 import dask.array as da
 from dask.distributed import Client
-
-
-# from sklearn.cluster import KMeans
 from dask_ml.cluster import KMeans
-
-# from sklearn.preprocessing import StandardScaler
 from dask_ml.preprocessing import StandardScaler
-
-# from sklearn.decomposition import PCA
 from dask_ml.decomposition import PCA
-
 import numpy as np
 from collections import defaultdict
 from matplotlib import pyplot as plt
