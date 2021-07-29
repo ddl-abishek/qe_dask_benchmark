@@ -80,7 +80,7 @@ RUN pip install \
 		cd /mnt  
 		wget https://github.com/ddl-abishek/qe_dask_benchmark/archive/refs/heads/main.zip
 
-  - unzip the downloaded dataset
+  - unzip the downloaded zip file
 		unzip qe_dask_benchmark.zip
 
   - Navigate to the dataset directory and download the dataset
