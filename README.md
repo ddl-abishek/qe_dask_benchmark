@@ -75,7 +75,7 @@ RUN pip install \
 
  ## Steps to run the test/project:
 
-  - Start the workspace with the above configuration
+  - Create a DFS project with the name "qe_dask_benchmark_GBP". Start the workspace with the above configuration
   - Start a terminal and run the below command
 		cd /mnt  
 		wget https://github.com/ddl-abishek/qe_dask_benchmark/archive/refs/heads/main.zip
@@ -93,10 +93,14 @@ RUN pip install \
   		```cd /mnt```
 
   - Edit the ```config.yml``` file:
-  		Replace every occurence of ```"/mnt/data/qe_dask_GBP"``` to ```domino/datasets/local/<domino-project-name>```
+  		Replace every occurence of ```"/mnt/data/qe_dask_GBP"``` to ```"/domino/datasets/local/qe_dask_benchmark_GBP"```
+  		Replace  ```"/mnt/artifacts/results"``` with ```"/mnt/results"```      
 
   - Run the preprocess script (This cleans the dataset)
   		```python preprocess.py```
 
   - Run the clustering script
   		```python k_means_clustering.py```
+        
+  - After each one of these scripts completes, you can see the performance report in 
+  		```/mnt/results```
