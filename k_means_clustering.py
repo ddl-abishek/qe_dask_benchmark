@@ -1,6 +1,6 @@
 import dask.dataframe as dd
 import dask.array as da
-from dask.distributed import Client
+from dask.distributed import Client, performance_report
 from dask_ml.cluster import KMeans
 from dask_ml.preprocessing import StandardScaler
 from dask_ml.decomposition import PCA
@@ -66,15 +66,7 @@ if __name__ == "__main__":
     service_host = os.environ['DASK_SCHEDULER_SERVICE_HOST']
 
     client = Client(address=f'{service_host}:{service_port}', direct_to_workers=True)
-    dask_map = client.map(get_kmeans_pca, ['2013-14', '2015', '2016', '2017'])
-    client.gather(dask_map)
-    
-#     parser = argparse.ArgumentParser()
-#     parser.add_argument('--csv_year', type=str,help="year of .csv ; possible values - 2013-14, 2015, 2016, 2017",required=True)
-    
-#     args = parser.parse_args()
-    
-#     assert args.csv_year in ['2013-14', '2015', '2016', '2017']
-    
-#     df_kmeans_pca = get_kmeans_pca(args.csv_year)
-#     plot(df_kmeans_pca, args.csv_year)
+
+    with performance_report(filename=f"/mnt/artifacts/results/dask-report_k_means_clustering_{str(datetime.now())}.html"):
+        dask_map = client.map(get_kmeans_pca, ['2013-14', '2015', '2016', '2017'])
+        client.gather(dask_map)

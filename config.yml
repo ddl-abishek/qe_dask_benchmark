@@ -1,15 +1,15 @@
  Dataset:
-     'dir' : "/mnt/data/qe_dask_GBP"
-     '2013-14' : "/mnt/data/qe_dask_GBP/Parking_Violations_Issued_-_Fiscal_Year_2014__August_2013___June_2014_.csv"
-     '2015' : "/mnt/data/qe_dask_GBP/Parking_Violations_Issued_-_Fiscal_Year_2015.csv"
-     '2016' : "/mnt/data/qe_dask_GBP/Parking_Violations_Issued_-_Fiscal_Year_2016.csv"
-     '2017' : "/mnt/data/qe_dask_GBP/Parking_Violations_Issued_-_Fiscal_Year_2017.csv"
+     'dir' : "/mnt/data/qe_dask_benchmark_GBP"
+     '2013-14' : "/mnt/data/qe_dask_benchmark_GBP/Parking_Violations_Issued_-_Fiscal_Year_2014__August_2013___June_2014_.csv"
+     '2015' : "/mnt/data/qe_dask_benchmark_GBP/Parking_Violations_Issued_-_Fiscal_Year_2015.csv"
+     '2016' : "/mnt/data/qe_dask_benchmark_GBP/Parking_Violations_Issued_-_Fiscal_Year_2016.csv"
+     '2017' : "/mnt/data/qe_dask_benchmark_GBP/Parking_Violations_Issued_-_Fiscal_Year_2017.csv"
  clean_data:
-     'dir' : "/mnt/data/qe_dask_GBP/clean_data"
-     '2013-14' : "/mnt/data/qe_dask_GBP/clean_data/clean_data_13_14.csv"
-     '2015' : "/mnt/data/qe_dask_GBP/clean_data/clean_data_15.csv"
-     '2016' : "/mnt/data/qe_dask_GBP/clean_data/clean_data_16.csv"
-     '2017' : "/mnt/data/qe_dask_GBP/clean_data/clean_data_17.csv"
+     'dir' : "/mnt/data/qe_dask_benchmark_GBP/clean_data"
+     '2013-14' : "/mnt/data/qe_dask_benchmark_GBP/clean_data/clean_data_13_14.csv"
+     '2015' : "/mnt/data/qe_dask_benchmark_GBP/clean_data/clean_data_15.csv"
+     '2016' : "/mnt/data/qe_dask_benchmark_GBP/clean_data/clean_data_16.csv"
+     '2017' : "/mnt/data/qe_dask_benchmark_GBP/clean_data/clean_data_17.csv"
  PCA:
      'n_components' : 3
  KMeans:
@@ -17,4 +17,4 @@
      'init' : 'k-means++'
      'random_state' : 42
  artifacts : 
-     'path' : './artifacts'
+     'path' : '/mnt/artifacts/results'
