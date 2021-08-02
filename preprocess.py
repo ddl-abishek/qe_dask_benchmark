@@ -41,6 +41,6 @@ if __name__ == "__main__":
     client = Client(address=f'{service_host}:{service_port}', direct_to_workers=True)
     client.upload_file('utils.py')
     
-    with performance_report(filename=f"/mnt/artifacts/results/dask-report_preprocess_{str(datetime.now())}.html"):
+    with performance_report(filename=f"{config['artifacts']['path']}/dask-report_preprocess_{str(datetime.now())}.html"):
         dask_map = client.map(preprocess_csv, ['2013-14', '2015', '2016', '2017'])
         client.gather(dask_map)
