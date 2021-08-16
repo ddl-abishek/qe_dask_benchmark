@@ -39,34 +39,30 @@ def get_kmeans_pca(csv_year):
                         random_state = config['KMeans']['random_state'])
     kmeans_pca.fit(scores_pca)
     
-
     scores_pca = dd.from_array(scores_pca,columns=['Component 1','Component 2','Component 3'])
-    clean_data = clean_data.repartition(npartitions=5)
-    scores_pca = scores_pca.repartition(npartitions=5)
+    clean_data = clean_data.repartition(npartitions=4)
+    scores_pca = scores_pca.repartition(npartitions=4)
     df_kmeans_pca = dd.concat([clean_data.reset_index(drop=True),scores_pca.reset_index(drop=True)],axis=1)
 
     # the last column we add contains the pca k-means clutering labels
     df_kmeans_pca['Segment K-means PCA'] = kmeans_pca.labels_
     df_kmeans_pca['Segment'] = df_kmeans_pca['Segment K-means PCA'].map({0:'first',1:'second',2:'third'})
     df_kmeans_pca = df_kmeans_pca.drop(columns='Segment K-means PCA')
-
-    x_axis = df_kmeans_pca['Component 2']
-    y_axis = df_kmeans_pca['Component 1']
-    plt.figure(figsize=(12,9))
-    sns.scatterplot(x_axis,y_axis,hue=df_kmeans_pca['Segment'],palette=['r','g','b'])
-    plt.title('Clusters by PCA Components')
     
-    if not(os.path.isdir(config['artifacts']['path'])):
-        os.makedirs(config['artifacts']['path'])
+    if not(os.path.isdir(config['KMeans']['dir'])):
+        os.makedirs(config['KMeans']['dir'])
 
-    plt.savefig(f"{config['artifacts']['path']}/scatter_{str(datetime.now()).replace(' ','_')}_{csv_year}.png")
+    df_kmeans_pca.compute().to_csv(config['KMeans'][csv_year], index=False)
 
 if __name__ == "__main__":
     service_port = os.environ['DASK_SCHEDULER_SERVICE_PORT']
     service_host = os.environ['DASK_SCHEDULER_SERVICE_HOST']
 
     client = Client(address=f'{service_host}:{service_port}', direct_to_workers=True)
-
+    client.wait_for_workers(n_workers=4)
+    client.restart()
+    
     with performance_report(filename=f"{config['artifacts']['path']}/dask-report_k_means_clustering_{str(datetime.now())}.html"):
-        dask_map = client.map(get_kmeans_pca, ['2013-14', '2015', '2016', '2017'])
+        dask_map = client.map(get_kmeans_pca,['2013-14','2015','2016','2017'])
         client.gather(dask_map)
+    client.close()
