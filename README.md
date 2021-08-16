@@ -63,12 +63,12 @@ RUN pip install \
    - Dask workspace settings - DFS project
      - Workspace compute environment - select the environment with the above workspace compute environment
      - Workspace IDE : JupyterLab
-     - Hardware Tier : Medium
+     - Hardware Tier : Large
 
      - Compute cluster - Attach compute cluster - Dask 
-     - Number of Workers - 3
-     - Worker Hardware Tier - Medium
-     - Scheduler Hardware Tier - Medium
+     - Number of Workers - 4
+     - Worker Hardware Tier - Large
+     - Scheduler Hardware Tier - Large
      - Cluster Compute Environment - select the environment with the above Dask cluster compute environment
 
      - Check the checkbox - Dedicated local storage per worker and enter 30GiB
