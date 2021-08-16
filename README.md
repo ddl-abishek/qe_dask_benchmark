@@ -101,6 +101,9 @@ RUN pip install \
 
   - Run the clustering script
   		```python k_means_clustering.py```
-        
-  - After each one of these scripts completes, you can see the performance report in 
-  		```/mnt/results```
+		
+  - Finally to get the scatter plots 
+  		```python scatter_plot.py```
+
+  - After each one of these scripts complete, you can see the performance report in 
+  		```/mnt/artifacts/results```
