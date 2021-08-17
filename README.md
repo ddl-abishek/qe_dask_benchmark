@@ -8,21 +8,24 @@
 
   	 - Dockerfile Instructions
 ```
+RUN pip install "dask[complete]"==2021.6.2
+RUN pip install dask-ml
+
 RUN pip install \
-	ray[all]==1.3.0 \   
-	pandas \   
-	pyyaml==5.4.1 \   
+    ray[all]==1.3.0 \   
+    pandas \   
+    torch==1.8.0 \   
+    torchvision==0.9.0 \   
+    librosa==0.8.0 \   
+    pyyaml==5.4.1 \   
+    tensorboard==2.4.1 \
+    matplotlib==3.4.2 \
+    seaborn==0.11.1 \
 	blosc==1.9.2 \
-	dask==2021.06.0 \
-	dask distributed==2021.06.0 \
 	lz4==3.1.1 \
 	msgpack==1.0.0 \
-	numpy==1.18.1 \
-	matplotlib==3.4.2 \
-	seaborn==0.11.1 \
-	scikit-learn==0.24.2 \
-	tables==3.6.1 \
-	dask_ml==1.9.0
+	numpy==1.18.1
+
 ```
 
  - Pluggable Workspace Tools:
