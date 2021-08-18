@@ -39,6 +39,8 @@ if __name__ == "__main__":
     service_host = os.environ['DASK_SCHEDULER_SERVICE_HOST']
 
     client = Client(address=f'{service_host}:{service_port}', direct_to_workers=True)
+    client.wait_for_workers(n_workers=12)
+    client.restart()
     client.upload_file('utils.py')
     
     with performance_report(filename=f"{config['artifacts']['path']}/dask-report_preprocess_{str(datetime.now())}.html"):
