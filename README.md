@@ -69,7 +69,7 @@ RUN pip install \
      - Hardware Tier : Large
 
      - Compute cluster - Attach compute cluster - Dask 
-     - Number of Workers - 4
+     - Number of Workers - 12
      - Worker Hardware Tier - Large
      - Scheduler Hardware Tier - Large
      - Cluster Compute Environment - select the environment with the above Dask cluster compute environment
