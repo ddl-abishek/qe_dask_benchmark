@@ -96,7 +96,7 @@ RUN pip install \
   		```cd /mnt```
 
   - Edit the ```config.yml``` file:
-  		Replace every occurence of ```"/mnt/data/qe_dask_GBP"``` to ```"/domino/datasets/local/qe_dask_benchmark_GBP"```
+  		Replace every occurence of ```"/mnt/data/qe_dask_benchmark_GBP"``` to ```"/domino/datasets/local/qe_dask_benchmark_GBP"```
   		Replace  ```"/mnt/artifacts/results"``` with ```"/mnt/results"```      
 
   - Run the preprocess script (This cleans the dataset)
