@@ -63,6 +63,25 @@ if __name__ == "__main__":
     client.restart()
     
     with performance_report(filename=f"{config['artifacts']['path']}/dask-report_k_means_clustering_{str(datetime.now())}.html"):
-        dask_map = client.map(get_kmeans_pca,['2013-14','2015','2016','2017'])
+        dask_map = client.map(get_kmeans_pca,['2013-14',
+                                               '2013-14_1',
+                                               '2013-14_2',
+                                               '2013-14_3',
+                                               '2013-14_4', 
+                                               '2015',
+                                               '2015_1',
+                                               '2015_2',
+                                               '2015_3',
+                                               '2015_4', 
+                                               '2016', 
+                                               '2016_1',
+                                               '2016_2',
+                                               '2016_3',
+                                               '2016_4', 
+                                               '2017',
+                                               '2017_1',
+                                               '2017_2',
+                                               '2017_3',
+                                               '2017_4'])
         client.gather(dask_map)
     client.close()
