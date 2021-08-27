@@ -11,7 +11,7 @@ import os
 config = yaml.load(open("config.yml", "r"), yaml.SafeLoader)
 
 def preprocess_csv(csv_year):
-    if csv_year == '2015':
+    if '2015' in csv_year:
         dtype = {'Vehicle Expiration Date' : object,
                  'Violation Precinct' : float,
                  'Issuer Precinct' : float,
@@ -39,10 +39,29 @@ if __name__ == "__main__":
     service_host = os.environ['DASK_SCHEDULER_SERVICE_HOST']
 
     client = Client(address=f'{service_host}:{service_port}', direct_to_workers=True)
-    client.wait_for_workers(n_workers=12)
+    client.wait_for_workers(n_workers=23)
     client.restart()
     client.upload_file('utils.py')
     
     with performance_report(filename=f"{config['artifacts']['path']}/dask-report_preprocess_{str(datetime.now())}.html"):
-        dask_map = client.map(preprocess_csv, ['2013-14', '2015', '2016', '2017'])
+        dask_map = client.map(preprocess_csv, ['2013-14',
+                                              '2013-14_1',
+                                              '2013-14_2',
+                                              '2013-14_3',
+                                              '2013-14_4',
+                                              '2015',
+                                              '2015_1',
+                                              '2015_2',
+                                              '2015_3',
+                                              '2015_4',
+                                              '2016',
+                                              '2016_1',
+                                              '2016_2',
+                                              '2016_3',
+                                              '2016_4',
+                                              '2017', 
+                                              '2017_1',
+                                              '2017_2',
+                                              '2017_3',
+                                              '2017_4'])
         client.gather(dask_map)

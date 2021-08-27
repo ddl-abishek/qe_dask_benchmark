@@ -36,7 +36,8 @@ def get_kmeans_pca(csv_year):
     # clustering via k means
     kmeans_pca = KMeans(n_clusters = config['KMeans']['n_clusters'], 
                         init = config['KMeans']['init'], 
-                        random_state = config['KMeans']['random_state'])
+                        random_state = config['KMeans']['random_state'],
+                        max_iter=config['KMeans']['max_iter'])
     kmeans_pca.fit(scores_pca)
     
     scores_pca = dd.from_array(scores_pca,columns=['Component 1','Component 2','Component 3'])
@@ -59,10 +60,29 @@ if __name__ == "__main__":
     service_host = os.environ['DASK_SCHEDULER_SERVICE_HOST']
 
     client = Client(address=f'{service_host}:{service_port}', direct_to_workers=True)
-    client.wait_for_workers(n_workers=4)
+    client.wait_for_workers(n_workers=23)
     client.restart()
     
     with performance_report(filename=f"{config['artifacts']['path']}/dask-report_k_means_clustering_{str(datetime.now())}.html"):
-        dask_map = client.map(get_kmeans_pca,['2013-14','2015','2016','2017'])
+        dask_map = client.map(get_kmeans_pca,['2013-14',
+                                              '2013-14_1',
+                                              '2013-14_2',
+                                              '2013-14_3',
+                                              '2013-14_4',
+                                              '2015',
+                                              '2015_1',
+                                              '2015_2',
+                                              '2015_3',
+                                              '2015_4',
+                                              '2016',
+                                              '2016_1',
+                                              '2016_2',
+                                              '2016_3',
+                                              '2016_4',
+                                              '2017', 
+                                              '2017_1',
+                                              '2017_2',
+                                              '2017_3',
+                                              '2017_4'])
         client.gather(dask_map)
     client.close()
