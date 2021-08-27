@@ -53,36 +53,39 @@ def get_kmeans_pca(csv_year):
     if not(os.path.isdir(config['KMeans']['dir'])):
         os.makedirs(config['KMeans']['dir'])
 
-    df_kmeans_pca.compute().to_csv(config['KMeans'][csv_year], index=False)
+    df_kmeans_pca.compute().to_csv(config['KMeans'][csv_year]+str(datetime.now()), index=False)
 
 if __name__ == "__main__":
     service_port = os.environ['DASK_SCHEDULER_SERVICE_PORT']
     service_host = os.environ['DASK_SCHEDULER_SERVICE_HOST']
+    start_time = datetime.now()
 
     client = Client(address=f'{service_host}:{service_port}', direct_to_workers=True)
-    client.wait_for_workers(n_workers=23)
-    client.restart()
-    
-    with performance_report(filename=f"{config['artifacts']['path']}/dask-report_k_means_clustering_{str(datetime.now())}.html"):
-        dask_map = client.map(get_kmeans_pca,['2013-14',
-                                              '2013-14_1',
-                                              '2013-14_2',
-                                              '2013-14_3',
-                                              '2013-14_4',
-                                              '2015',
-                                              '2015_1',
-                                              '2015_2',
-                                              '2015_3',
-                                              '2015_4',
-                                              '2016',
-                                              '2016_1',
-                                              '2016_2',
-                                              '2016_3',
-                                              '2016_4',
-                                              '2017', 
-                                              '2017_1',
-                                              '2017_2',
-                                              '2017_3',
-                                              '2017_4'])
-        client.gather(dask_map)
+    client.wait_for_workers(n_workers=config['dask']['num_workers'])
+    num_of_times_run_wkload = 10
+    for i in range(num_of_times_run_wkload):
+        client.restart()
+        with performance_report(filename=f"{config['artifacts']['path']}/dask-report_k_means_clustering_{str(datetime.now())}.html"):
+            dask_map = client.map(get_kmeans_pca,['2013-14',
+                                                  '2013-14_1',
+                                                  '2013-14_2',
+                                                  '2013-14_3',
+                                                  '2013-14_4',
+                                                  '2015',
+                                                  '2015_1',
+                                                  '2015_2',
+                                                  '2015_3',
+                                                  '2015_4',
+                                                  '2016',
+                                                  '2016_1',
+                                                  '2016_2',
+                                                  '2016_3',
+                                                  '2016_4',
+                                                  '2017', 
+                                                  '2017_1',
+                                                  '2017_2',
+                                                  '2017_3',
+                                                  '2017_4'])
+            client.gather(dask_map)
     client.close()
+    print(datetime.now()-start_time)

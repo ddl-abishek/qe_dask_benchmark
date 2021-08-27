@@ -42,13 +42,16 @@
      '2017_2' : "/mnt/data/qe_dask_benchmark_GBP/clean_data/clean_data_17_2.csv"
      '2017_3' : "/mnt/data/qe_dask_benchmark_GBP/clean_data/clean_data_17_3.csv"
      '2017_4' : "/mnt/data/qe_dask_benchmark_GBP/clean_data/clean_data_17_4.csv"
+ dask:
+     'num_workers' : 23
+ 
  PCA:
      'n_components' : 3
  KMeans:
      'n_clusters' : 3
      'init' : 'k-means++'
      'random_state' : 42
-     'max_iter' : 1500
+     'max_iter' : 3000
      'dir' : "/mnt/data/qe_dask_benchmark_GBP/kmeans"
      '2013-14' : "/mnt/data/qe_dask_benchmark_GBP/kmeans/Parking_Violations_Issued_-_Fiscal_Year_2014__August_2013___June_2014_.csv"
      '2013-14_1' : "/mnt/data/qe_dask_benchmark_GBP/kmeans/Parking_Violations_Issued_-_Fiscal_Year_2014__August_2013___June_2014_1.csv"
