@@ -12,7 +12,7 @@ from multiprocessing import Pool
 config = yaml.load(open("config.yml", "r"), yaml.SafeLoader)
 
 def get_plot(csv_year):
-    df_kmeans_pca = pd.read_csv(config['KMeans']['2013-14'])
+    df_kmeans_pca = pd.read_csv(config['KMeans'][csv_year])
     x_axis = df_kmeans_pca['Component 2']
     y_axis = df_kmeans_pca['Component 1']
     plt.figure(figsize=(12,9))
