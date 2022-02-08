@@ -5,7 +5,7 @@
   ## Environments
  - Workspace compute environment
   	 - Base Image URI : ```quay.io/domino/pre-release-environments:domino-minimal-environment.nitinm.2021-07-19``` 
-
+(THE DOCKERFILE INSTRUCTIONS ARE BASED ON DOMINO 4.6. PLEASE REFER TO https://dominodatalab.atlassian.net/wiki/spaces/ENG/pages/1812824298/Fleetcommand+Deployment+specifications+for+running+DSP+Workflow+tests FOR UP TO DATE DOCKERFILE INSTRUCTIONS)
   	 - Dockerfile Instructions
 ```
 RUN pip install "dask[complete]"==2021.6.2
