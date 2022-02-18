@@ -40,8 +40,8 @@ def get_kmeans_pca(csv_year):
     kmeans_pca.fit(scores_pca)
     
     scores_pca = dd.from_array(scores_pca,columns=['Component 1','Component 2','Component 3'])
-    clean_data = clean_data.repartition(npartitions=4)
-    scores_pca = scores_pca.repartition(npartitions=4)
+    clean_data = clean_data.repartition(npartitions=3)
+    scores_pca = scores_pca.repartition(npartitions=3)
     df_kmeans_pca = dd.concat([clean_data.reset_index(drop=True),scores_pca.reset_index(drop=True)],axis=1)
 
     # the last column we add contains the pca k-means clutering labels
