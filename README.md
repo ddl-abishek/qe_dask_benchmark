@@ -89,8 +89,7 @@ RUN pip install \
   - Navigate to the dataset directory and download the dataset
 
   		   cd /domino/datasets/local/<domino-project-name>
-  		   wget https://dsp-workflow.s3.us-west-2.amazonaws.com/nyc-parking-tickets.zip --no-check-certificate
-  		   unzip nyc-parking-tickets.zip
+  		   wget https://dsp-workflow.s3.us-west-2.amazonaws.com/nyc-parking-tickets.zip --no-check-certificate ; unzip nyc-parking-tickets.zip
 
   - Naviagate to 
   		```cd /mnt```
