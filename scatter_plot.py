@@ -16,7 +16,7 @@ def get_plot(csv_year):
     x_axis = df_kmeans_pca['Component 2']
     y_axis = df_kmeans_pca['Component 1']
     plt.figure(figsize=(12,9))
-    sns.scatterplot(x_axis,y_axis,hue=df_kmeans_pca['Segment'],palette=['r','g','b'])
+    sns.scatterplot(data=df_kmeans_pca,x=x_axis,y=y_axis,hue=df_kmeans_pca['Segment'],palette=['r','g','b'])
     plt.title('Clusters by PCA Components')
 
     if not(os.path.isdir(config['artifacts']['path'])):
